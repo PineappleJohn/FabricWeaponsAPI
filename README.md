@@ -44,7 +44,7 @@ WeaponBuilder weapon = new WeaponBuilder.Builder()
   .build();
 ```
 ## Overrides
-I personally do not reccomend using overrides
+I personally do not recommend using overrides, (especially for translation keys) but they are options.
 ### Override translation key
 ```java
 WeaponBuilder weapon = new WeaponBuilder.Builder()
@@ -53,3 +53,9 @@ WeaponBuilder weapon = new WeaponBuilder.Builder()
   .build();
 ```
 ### Override settings
+```java
+WeaponBuilder weapon = new WeaponBuilder.Builder()
+  .register(item)
+  .overrideSettings(new Item.Settings()) // This also adds the registry key
+  .build();
+```
