@@ -24,5 +24,32 @@ WeaponBuilder weapon = new WeaponBuilder.Builder()
   .register(item) // Registers your weapon as the item.
   .build();
 ```
-### More methods
-yeah im going in a pool im on vacation rn sorry
+## More methods
+### Fireproof
+```java
+new RegistrableItem
+                        .Builder(
+                                Identifier.of("fabricweaponsapi", "sword"),
+                                WeaponTypes.SWORD, // WeaponTypes currently include SWORD, AXE, and MACE
+                                ToolMaterial.NETHERITE // Contains all tool materials
+                        )
+                        .fireproof() // Very simple and easy
+                        .build();
+```
+### Tooltips
+```java
+WeaponBuilder weapon = new WeaponBuilder.Builder()
+  .register(item)
+  .addTooltip("A custom tooltip") // Check out Minecraft's built-in text colour coding system
+  .build();
+```
+## Overrides
+I personally do not reccomend using overrides
+### Override translation key
+```java
+WeaponBuilder weapon = new WeaponBuilder.Builder()
+  .register(item)
+  .overrideTranslationKey("FabricWeaponsAPI Sword")
+  .build();
+```
+### Override settings
