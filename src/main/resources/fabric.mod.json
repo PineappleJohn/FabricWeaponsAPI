@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "fabricweaponsapi",
+  "version": "${version}",
+  "name": "FabricWeaponsApi",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/fabricweaponsapi/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.darwin.fabricweaponsapi.client.FabricweaponsapiDataGenerator"
+    ],
+    "client": [
+      "org.darwin.fabricweaponsapi.client.FabricweaponsapiClient"
+    ],
+    "main": [
+      "org.darwin.fabricweaponsapi.Fabricweaponsapi"
+    ]
+  },
+  "mixins": [
+    "fabricweaponsapi.mixins.json",
+    {
+      "config": "fabricweaponsapi.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

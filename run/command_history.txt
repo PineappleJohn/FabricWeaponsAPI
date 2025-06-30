@@ -1,0 +1,18 @@
+/give @s fabricweaponsapi:sword
+/gamemode spectator
+/gamemode survival
+/summon minecraft:cow
+/give @s fabricweaponsapi:sword
+/clear
+/give @s fabricweaponsapi:sword
+/summon cow
+/give @s fabricweaponsapi:sword
+/summon cow
+/give @s fabricweaponsapi:better_mace
+/summon minecraft:cow
+/gamemode creative
+/give @s fabricweaponsapi:sword
+/gamemode survival
+/summon minecraft:cow
+/gamemode creative
+/give @s fabricweaponsapi:sword
