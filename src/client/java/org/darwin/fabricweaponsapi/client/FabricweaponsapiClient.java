@@ -1,6 +1,7 @@
 package org.darwin.fabricweaponsapi.client;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.ActionResult;
@@ -25,6 +26,7 @@ public class FabricweaponsapiClient implements ClientModInitializer {
                 .Builder()
                 .addTooltip("Sword :D")
                 .overrideTranslationKey("API sword")
+                .overrideSettings(new Item.Settings())
                 .register(new RegistrableItem
                         .Builder(
                                 Identifier.of("fabricweaponsapi", "sword"),

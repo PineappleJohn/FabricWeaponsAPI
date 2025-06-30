@@ -3,6 +3,7 @@ package org.darwin.fabricweaponsapi.client.registry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.*;
+import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.darwin.fabricweaponsapi.client.items.AxeItemAPI;
@@ -87,7 +88,7 @@ public class WeaponBuilder {
         private WeaponTypes type;
         private boolean registerthis = false;
         private static boolean addTooltip = false;
-        private static String tooltip = "";
+        private static Text tooltip = Text.empty();
         private RegistrableItem item;
         private Item registeredItem;
         private boolean addToGroup = false;
@@ -153,7 +154,7 @@ public class WeaponBuilder {
          */
         public Builder addTooltip(String value) {
             addTooltip = true;
-            tooltip = value;
+            tooltip = Text.of(value);
             return this;
         }
         private static String translationKey = "";
@@ -215,7 +216,7 @@ public class WeaponBuilder {
             settings.maxCount(1);
             settings.maxDamage(item.durability());
             settings.component(WeaponComponents.TOOLTIP_COMPONENT, addTooltip ? 1 : 0);
-            settings.component(WeaponComponents.TOOLTIP, tooltip);
+            settings.component(WeaponComponents.TOOLTIP, tooltip.toString());
             if (!Objects.equals(translationKey, "")) settings.translationKey(translationKey);
 
             if (item.shouldOverrideSettings()) {
@@ -235,7 +236,7 @@ public class WeaponBuilder {
             settings.maxCount(1);
             settings.maxDamage(item.durability());
             settings.component(WeaponComponents.TOOLTIP_COMPONENT, addTooltip ? 1 : 0);
-            settings.component(WeaponComponents.TOOLTIP, tooltip);
+            settings.component(WeaponComponents.TOOLTIP, tooltip.toString());
             if (!Objects.equals(translationKey, "")) settings.translationKey(translationKey);
 
             if (item.shouldOverrideSettings()) {
@@ -258,7 +259,7 @@ public class WeaponBuilder {
             settings.maxCount(1);
             settings.maxDamage(item.durability());
             settings.component(WeaponComponents.TOOLTIP_COMPONENT, addTooltip ? 1 : 0);
-            settings.component(WeaponComponents.TOOLTIP, tooltip);
+            settings.component(WeaponComponents.TOOLTIP, tooltip.toString());
             if (!Objects.equals(translationKey, "")) settings.translationKey(translationKey);
 
 
