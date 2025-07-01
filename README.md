@@ -59,3 +59,42 @@ WeaponBuilder weapon = new WeaponBuilder.Builder()
   .overrideSettings(new Item.Settings()) // This also adds the registry key
   .build();
 ```
+## Advanced Usage
+### Callbacks
+There are a few callbacks implemented in the API. These include usage and attack callbacks.
+```java
+WeaponBuilder weapon = new WeaponBuilder.Builder()
+        .register(item)
+        .build();
+    weapon.getSwordItem()
+            .AddUsageCallback((player, world, hand) -> {
+                // Do something when the weapon is used
+                /*
+                        ActionResult.FAIL - Cancels the usage
+                        ActionResult.SUCCESS - Continues
+                        ActionResult.PASS - Passes the usage to the next handler
+                 */
+                return ActionResult.SUCCESS; // Return the result of the usage
+            });
+    weapon.getSwordItem()
+            .AddAttackCallback((stack, player, target) -> {
+                // Do something when the weapon is used to attack
+                /*
+                        ActionResult.FAIL - Cancels the attack
+                        ActionResult.SUCCESS - Continues
+                        ActionResult.PASS - Passes the attack to the next handler
+                 */
+                return ActionResult.SUCCESS; // Return the result of the attack
+            });
+```
+### Registering item groups
+Item groups support two methods of registration, registering using a custom ItemGroup class (but that needs to registered to
+the item group registry) or using a registry key from ItemGroups.(group).
+```java
+
+WeaponBuilder weapon = new WeaponBuilder.Builder()
+  .register(item)
+  .addToGroup(ItemGroups.COMBAT)
+  .build();
+
+```
