@@ -80,21 +80,51 @@ WeaponBuilder weapon = new WeaponBuilder.Builder()
             .AddAttackCallback((stack, player, target) -> {
                 // Do something when the weapon is used to attack
                 /*
-                        ActionResult.FAIL - Cancels the attack
-                        ActionResult.SUCCESS - Continues
-                        ActionResult.PASS - Passes the attack to the next handler
+                        true - Continues the attack
+                        false - Cancels the attack
                  */
-                return ActionResult.SUCCESS; // Return the result of the attack
+                return true;
             });
 ```
 ### Registering item groups
 Item groups support two methods of registration, registering using a custom ItemGroup class (but that needs to registered to
 the item group registry) or using a registry key from ItemGroups.(group).
 ```java
-
 WeaponBuilder weapon = new WeaponBuilder.Builder()
   .register(item)
   .addToGroup(ItemGroups.COMBAT)
   .build();
 
+ItemGroupManager.RegisterGroups();
+```
+
+
+# Full example
+A full example of a registered item.
+```java
+WeaponBuilder maceItem = new WeaponBuilder
+                .Builder()
+                .addTooltip("The mace test")
+                .addToGroup(ItemGroups.COMBAT)
+                .register(new RegistrableItem.Builder(
+                        Identifier.of("fabricweaponsapi", "mace_test"),
+                        WeaponTypes.MACE,
+                        ToolMaterial.GOLD )
+                        .damage(100f)
+                        .attackSpeed(1.2f)
+                        .durability(1)
+                        .build())
+                .build();
+
+maceItem.getMaceItem().AddAttackCallback((stack, player, target, slammed) -> {
+  System.out.println("Hit an animal " + (slammed ? "and slammed" : ""));
+  return true;
+});
+
+maceItem.getMaceItem().AddUsageCallback(((one, two, three) -> {
+  System.out.println("Used the mace");
+  return ActionResult.PASS;
+}));
+
+ItemGroupManager.RegisterGroups();
 ```
